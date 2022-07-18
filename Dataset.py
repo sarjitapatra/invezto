@@ -18,7 +18,6 @@ def init_connection():
     USER_NAME = env_vars[0]["value"]
     PASSWORD = env_vars[1]["value"]
     conn_str = 'mongodb+srv://' + USER_NAME + ':' + PASSWORD + '@cluster0.e85qmcu.mongodb.net/?retryWrites=true&w=majority'
-    st.write(conn_str)
     client = pymongo.MongoClient(conn_str)
     database = client.Stock_Price
     return database
