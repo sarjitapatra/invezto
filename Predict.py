@@ -1,6 +1,5 @@
 import joblib
 import streamlit as st
-import Dataset
 import EDA
 
 import io
@@ -10,31 +9,6 @@ import pandas as pd
 
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
-
-# @st.experimental_singleton(suppress_st_warning=True)
-# def fetch_and_prepare_data():
-
-#     st.info("Please wait while we fetch your dataset...")
-
-#     db = Dataset.init_connection()
-#     name = st.session_state.name
-#     st.write(name)
-#     collection = db.get_collection(name)
-#     df = pd.DataFrame(list(collection.find({}))).astype({"_id": str})
-#     df_edited = df.drop(columns = ["_id"])
-
-#     # gc = gspread.service_account(filename = 'invezto-d11008a8055f.json')
-#     # sh = gc.open_by_url("https://docs.google.com/spreadsheets/d/1bvXxcvWTSxbVOBwoCGpxxgy_sPdFxs-YF12fMn4ej6A/edit#gid=0")
-#     # ws = sh.worksheet('init')
-#     # df = pd.DataFrame(ws.get_all_records())
-
-#     if df_edited is not None:
-#         st.success('File successfully fetched!')
-#         return df_edited
-#     else:
-#         st.write('Please upload a valid file in the "Dataset" page')
-#         return None
-
 
 def prepare_time_series_data(df):
     df = df[["Close"]].values.reshape(-1, 1)

@@ -1,17 +1,29 @@
-# import gspread
-# from df2gspread import df2gspread as d2g
-# from oauth2client.service_account import ServiceAccountCredentials
-
+from http import client
+# import os
 import pymongo
-
+# from dotenv import load_dotenv
+from pathlib import Path
 import streamlit as st
 import pandas as pd
+# from dotenv import dotenv_values
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
 @st.experimental_singleton
 def init_connection():
-    client = pymongo.MongoClient('mongodb+srv://SarjitaPatra:mqwzWBwp4mqEMV9c@cluster0.e85qmcu.mongodb.net/?retryWrites=true&w=majority')
+    env_vars = [] # or dict {}
+    with open('secrets.env') as f:
+        for line in f:
+            if line.startswith('#') or not line.strip():
+                continue
+            key, value = line.strip().split('=', 1)
+            env_vars.append({'name': key, 'value': value}) # Save to a list
+
+    USER_NAME = env_vars[0]["value"]
+    PASSWORD = env_vars[1]["value"]
+    conn_str = 'mongodb+srv://' + USER_NAME + ':' + PASSWORD + '@cluster0.e85qmcu.mongodb.net/?retryWrites=true&w=majority'
+    st.write(conn_str)
+    client = pymongo.MongoClient(conn_str)
     database = client.Stock_Price
     return database
 
@@ -25,17 +37,9 @@ def set_data(_db, name, dataframe):
 
 def upload_and_show_data(dataframe, name):
 
-        # st.info("Please wait while we upload your dataset...")
         with st.spinner('Please wait while we upload your dataset...'):
             db = init_connection()
             set_data(db, name, dataframe)
-
-        # scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-        # credentials = ServiceAccountCredentials.from_json_keyfile_name('invezto-d11008a8055f.json', scope)
-        # gc = gspread.authorize(credentials)
-        # spreadsheet_key = "1bvXxcvWTSxbVOBwoCGpxxgy_sPdFxs-YF12fMn4ej6A"
-        # wks_name = "init"         #gc.open("invezto").sheet1
-        # d2g.upload(dataframe, spreadsheet_key, wks_name, credentials=credentials, row_names = False, col_names=True)
 
         st.success('File successfully uploaded!')
 

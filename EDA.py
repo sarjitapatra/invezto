@@ -1,12 +1,6 @@
 import streamlit as st
 import Dataset
 
-# import pymongo
-
-# import gspread
-# from df2gspread import df2gspread as d2g
-# from oauth2client.service_account import ServiceAccountCredentials
-
 import numpy as np
 import pandas as pd
 
@@ -29,11 +23,6 @@ def fetch_and_prepare_data():
         df = pd.DataFrame(list(collection.find({}))).astype({"_id": str})
         df_edited = df.drop(columns = ["_id"])
 
-    # gc = gspread.service_account(filename = 'invezto-d11008a8055f.json')
-    # sh = gc.open_by_url("https://docs.google.com/spreadsheets/d/1bvXxcvWTSxbVOBwoCGpxxgy_sPdFxs-YF12fMn4ej6A/edit#gid=0")
-    # ws = sh.worksheet('init')
-    # df = pd.DataFrame(ws.get_all_records())
-
     if df_edited is not None:
         st.success('File successfully fetched!')
         return df_edited
@@ -44,13 +33,11 @@ def fetch_and_prepare_data():
 def main():
 
     df = fetch_and_prepare_data()
-    # st.write(type(df["Date"][0]))
-    # st.write(df.head())
     if df is not None:
+
         option = st.selectbox('Prepare colourful fun charts for my data', ['No', 'Yes'])
         if option == 'Yes':
-        # if st.button('Prepare colourful fun charts for my data'):
-        # monthwise opening and closing price
+
             with st.expander('Show me the monthly opening and closing trends of stock price'):
                 monthwise = df.groupby(df["Date"].dt.strftime('%B'))[["Open", "Close"]].mean()
                 new_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 
@@ -75,7 +62,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # monthwise high and low price
+
             with st.expander('Show me monthwise high and low price'):
                 new_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 
                             'September', 'October', 'November', 'December']
@@ -103,7 +90,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # closing_trends_stock_price(df)
+
             with st.expander('Show me the monthly closing trends of stock price'):
                 fig = px.line(df, x = df["Date"], y = df["Close"], labels = {"Date" : "Date", "Close" : "Closing price"})
                 fig.update_layout(title = "Stock Closing Price", 
@@ -116,7 +103,7 @@ def main():
                 fig.update_yaxes(showgrid = False)
                 st.plotly_chart(fig)
 
-            # monthly_volume_of_company(df)
+
             with st.expander('Show me the monthly volume of company'):
                 fig = px.line(df, x = df["Date"], y = df["Volume"], labels = {"Date" : "Date", "Close" : "Volume"})
                 fig.update_layout(title = "Monthly volume of company",
@@ -129,7 +116,7 @@ def main():
                 fig.update_yaxes(showgrid = False)
                 st.plotly_chart(fig)
 
-            #high_price(df)
+
             with st.expander('Show me the high price of company over time'):
                 df["Change"] = df["High"].div(df["High"].shift())
                 fig = go.Figure()
@@ -144,7 +131,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # change_in_monthly_volume(df)
+
             with st.expander('Show me the change in company volume over time'):
                 df["Change"] = df["Volume"].div(df["High"].shift())
                 fig = go.Figure()
@@ -159,7 +146,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # daily_percentage_return(df)
+
             with st.expander('Show me the daily percentage return'):
                 df["Daily Return"] = df["Adj Close"].pct_change()
                 fig = go.Figure()
@@ -174,7 +161,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # return_based_on_high_price(df)
+
             with st.expander('Show me the return based on high price change of the company'):
                 df['Change'] = df["High"].div(df["High"].shift())
                 df["Return"] = df["Change"].sub(1).mul(100)
@@ -190,7 +177,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # difference_in_high_price_change(df)
+
             with st.expander('Show me the difference in high price change of the company'):
                 fig = go.Figure()
                 fig.add_trace(go.Scatter(x = df["Date"], y = df["High"].diff()))
@@ -204,7 +191,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # comparison_of_high_and_rolling_high(df)
+
             with st.expander('Show me the comparison of high price and rolling high price'):
                 fig = go.Figure()
                 fig.add_trace(go.Scatter(x = df["Date"], y = df["High"], name = 'High price'))
@@ -218,7 +205,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # ohlc chart
+
             with st.expander('Show me the OHLC chart of a particular year'):
                 years = np.sort(df["Date"].dt.strftime('%Y').unique())
                 option = st.radio('Select the year to show OHLC chart', years)
@@ -238,7 +225,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # candlestick chart
+
             with st.expander('Show me the Candlestick chart of a particular year'):
                 years = np.sort(df["Date"].dt.strftime('%Y').unique())
                 option = st.radio('Select the year to show Candlestick chart', years)
@@ -258,7 +245,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # comparison_of_high_price_and_mean_and_std_of_it(df)
+
             with st.expander('Show me the comparison of high price, expanding mean, and expanding stdev of high price'):
                 fig = go.Figure()
                 fig.add_trace(go.Scatter(x = df["Date"], y = df["High"], name = 'High price'))
@@ -273,7 +260,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # autocorrelation plot
+
             with st.expander('Show me the autocorrelation chart'):
                 df_acf = acf(df["Close"], nlags = 25)
                 fig = go.Figure()
@@ -289,7 +276,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # partial autocorrelation plot
+
             with st.expander('Show me the partial autocorrelation chart'):
                 df_pacf = pacf(df["Close"], nlags = 25)
                 fig = go.Figure()
@@ -305,7 +292,7 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
-            # decomposition_plot(df)
+
             with st.expander('Show me the series decomposition plot'):
                 decomposed_data_close = seasonal_decompose(df["Close"], model='additive', period=365)
 
