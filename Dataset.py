@@ -1,11 +1,7 @@
-from http import client
-# import os
 import pymongo
-# from dotenv import load_dotenv
 from pathlib import Path
 import streamlit as st
 import pandas as pd
-# from dotenv import dotenv_values
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
@@ -69,7 +65,7 @@ def main():
         if type[-1] == "xlsx":
             name = type[0]
             st.session_state.name = name
-            dataframe = pd.read_excel(uploaded_file, engine='openpyxl')
+            dataframe = pd.read_excel(uploaded_file, engine = 'openpyxl')
             upload_and_show_data(dataframe, name)
         elif type[-1] == "xls":
             name = type[0]
