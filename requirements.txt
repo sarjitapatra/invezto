@@ -2,3 +2,11 @@ streamlit
 numpy
 pandas
 plotly
+statsmodels
+openpyxl
+xlsxwriter
+pymongo
+pymongo[srv]
+sklearn
+joblib
+tensorflow
