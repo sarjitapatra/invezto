@@ -1,7 +1,7 @@
 import pymongo
-from pathlib import Path
 import streamlit as st
 import pandas as pd
+import datetime
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
@@ -61,18 +61,19 @@ def main():
     if uploaded_file is not None:
 
         type = uploaded_file.name.split(".")
+        now = str(datetime.datetime.now())
         if type[-1] == "xlsx":
-            name = type[0]
-            st.session_state.name = name
+            name = type[0] + now
+            st.session_state.name = name 
             dataframe = pd.read_excel(uploaded_file, engine = 'openpyxl')
             upload_and_show_data(dataframe, name)
         elif type[-1] == "xls":
-            name = type[0]
-            st.session_state.name = name
+            name = type[0] + now
+            st.session_state.name = name 
             dataframe = pd.read_excel(uploaded_file)
             upload_and_show_data(dataframe, name)
         elif type[-1] == "csv":
-            name = type[0]
+            name = type[0] + now
             st.session_state.name = name
             dataframe = pd.read_csv(uploaded_file, parse_dates = ["Date"])
             upload_and_show_data(dataframe, name)
