@@ -4,6 +4,7 @@ import Dataset
 import numpy as np
 import pandas as pd
 
+import plotly.io as pio
 import plotly.express as px
 from plotly import graph_objects as go
 

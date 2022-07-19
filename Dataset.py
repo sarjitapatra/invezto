@@ -15,10 +15,10 @@ def init_connection():
             key, value = line.strip().split('=', 1)
             env_vars.append({'name': key, 'value': value}) # Save to a list
 
-    USER_NAME = env_vars[0]["value"]
-    PASSWORD = env_vars[1]["value"]
-    conn_str = 'mongodb+srv://' + USER_NAME + ':' + PASSWORD + '@cluster0.e85qmcu.mongodb.net/?retryWrites=true&w=majority'
-    client = pymongo.MongoClient(conn_str)
+    # USER_NAME = env_vars[0]["value"]
+    # PASSWORD = env_vars[1]["value"]
+    # conn_str = 'mongodb+srv://' + USER_NAME + ':' + PASSWORD + '@cluster0.e85qmcu.mongodb.net/?retryWrites=true&w=majority'
+    client = pymongo.MongoClient(**st.secrets["mongo"])
     database = client.Stock_Price
     return database
 
