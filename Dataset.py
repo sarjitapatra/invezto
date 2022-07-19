@@ -7,13 +7,13 @@ import datetime
 # Uses st.experimental_singleton to only run once.
 @st.experimental_singleton
 def init_connection():
-    env_vars = [] # or dict {}
-    with open('secrets.env') as f:
-        for line in f:
-            if line.startswith('#') or not line.strip():
-                continue
-            key, value = line.strip().split('=', 1)
-            env_vars.append({'name': key, 'value': value}) # Save to a list
+    # env_vars = [] # or dict {}
+    # with open('secrets.env') as f:
+    #     for line in f:
+    #         if line.startswith('#') or not line.strip():
+    #             continue
+    #         key, value = line.strip().split('=', 1)
+    #         env_vars.append({'name': key, 'value': value}) # Save to a list
 
     # USER_NAME = env_vars[0]["value"]
     # PASSWORD = env_vars[1]["value"]
