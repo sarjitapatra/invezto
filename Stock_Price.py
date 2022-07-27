@@ -3,13 +3,6 @@ import EDA
 import Predict
 import streamlit as st
 
-st.set_page_config(
-     page_title="Invezto",
-     page_icon="📈",
-     layout="wide",
-     initial_sidebar_state="auto",
- )
-
 def main():
     tab1, tab2, tab3 = st.tabs(["Upload Dataset", "EDA", "Predict"])
     with tab1:

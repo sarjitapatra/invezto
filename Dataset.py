@@ -27,7 +27,7 @@ def set_data(_db, name, dataframe):
 
 def upload_and_show_data(dataframe, name):
 
-        with st.spinner('Please wait while we upload your dataset...'):
+        with st.spinner('Please wait...'):
             db = init_connection()
             set_data(db, name, dataframe)
 

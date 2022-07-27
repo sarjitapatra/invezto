@@ -340,6 +340,11 @@ def main():
                 else:
                     st.info("Data is not stationary")
 
+        else:
+            pass
+    
+    else:
+        pass
 
 if __name__ == "__main__":
     main()
