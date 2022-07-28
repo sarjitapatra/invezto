@@ -330,9 +330,10 @@ def main():
                                 height=600)
                 st.plotly_chart(fig)
 
+            with st.expander('Show me if data is stationary'):
                 adf = adfuller(df["Volume"])
                 st.write("p-value of company: ",float(adf[1]))
-                if(float(adf[1])<=0.05):
+                if(float(adf[1]) <= 0.05):
                     st.info("Data is stationary")
                 else:
                     st.info("Data is not stationary")

@@ -20,7 +20,7 @@ def main():
         with tab1:
             option1 = st.selectbox('Start optimizing', ('No', 'Yes'))
             if option1 == 'Yes':
-                amt1 = st.number_input('Enter the total amount of investment', min_value = 0.01, value = 100.00)
+                amt1 = st.number_input('Enter the total amount of investment in USD', min_value = 0.01, value = 100.00)
                 portfolio = st.session_state["portfolio"]
                 mu = mean_historical_return(portfolio)
                 S = CovarianceShrinkage(portfolio).ledoit_wolf()
@@ -41,7 +41,7 @@ def main():
         with tab2:
             option2 = st.selectbox('Start optimizing for me', ('No', 'Yes'))
             if option2 == 'Yes':
-                amt2 = st.number_input('Enter total amount of investment', min_value = 0.01, value = 100.00)
+                amt2 = st.number_input('Enter total amount of investment in USD', min_value = 0.01, value = 100.00)
                 portfolio = st.session_state["portfolio"]
                 returns = portfolio.pct_change().dropna()
                 hrp = HRPOpt(returns)
@@ -61,7 +61,7 @@ def main():
         with tab3:
             option3 = st.selectbox('Start optimizing my portfolio', ('No', 'Yes'))
             if option3 == 'Yes':
-                amt3 = st.number_input('Enter your total amount of investment', min_value = 0.01, value = 100.00)
+                amt3 = st.number_input('Enter your total amount of investment in USD', min_value = 0.01, value = 100.00)
                 portfolio = st.session_state["portfolio"]
                 mu = mean_historical_return(portfolio)
                 S = portfolio.cov()
