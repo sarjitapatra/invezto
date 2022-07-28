@@ -4,7 +4,6 @@ import Dataset
 import numpy as np
 import pandas as pd
 
-import plotly.io as pio
 import plotly.express as px
 from plotly import graph_objects as go
 
@@ -19,16 +18,14 @@ def fetch_and_prepare_data():
 
         db = Dataset.init_connection()
         name = st.session_state.name
-        st.write(name)
         collection = db.get_collection(name)
         df = pd.DataFrame(list(collection.find({}))).astype({"_id": str})
         df_edited = df.drop(columns = ["_id"])
 
     if df_edited is not None:
-        st.success('File successfully fetched!')
         return df_edited
     else:
-        st.write('Please upload a valid file in the "Dataset" page')
+        st.error('Please upload a valid file in the "Dataset" page')
         return None
 
 def main():
@@ -208,7 +205,7 @@ def main():
 
 
             with st.expander('Show me the OHLC chart of a particular year'):
-                years = np.sort(df["Date"].dt.strftime('%Y').unique())
+                years = df["Date"].dt.strftime('%Y').unique()[::-1]
                 option = st.radio('Select the year to show OHLC chart', years)
                 fig = go.Figure()
                 fig.add_trace(go.Ohlc(x = df[df["Date"].dt.strftime('%Y') == option]["Date"], 
@@ -228,7 +225,7 @@ def main():
 
 
             with st.expander('Show me the Candlestick chart of a particular year'):
-                years = np.sort(df["Date"].dt.strftime('%Y').unique())
+                years = df["Date"].dt.strftime('%Y').unique()[::-1]
                 option = st.radio('Select the year to show Candlestick chart', years)
                 fig = go.Figure()
                 fig.add_trace(go.Candlestick(x = df[df["Date"].dt.strftime('%Y') == option]["Date"], 
