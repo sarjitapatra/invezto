@@ -21,13 +21,13 @@
 * Analyze various graphs based on the uploaded Dataset
   >Different Graphs are available based on the Stock data. Some of the them are displayed below :
   
-  <p align="center"><img src="https://user-images.githubusercontent.com/79036525/181626594-b2c7817b-5368-48f3-8ea3-1e8399ead86a.png" align="center" width="400" height="200"/>  &ensp;
+  <p align="center"><img src="https://user-images.githubusercontent.com/79036525/181626594-b2c7817b-5368-48f3-8ea3-1e8399ead86a.png" align="center" width="400" height="200"/> 
   <img src="https://user-images.githubusercontent.com/79036525/181626659-22b94c91-e757-4972-bc65-6d0315d8f513.png" align="center" width="400" height="200"/></p>
   
-  <p align="center"><img src="https://user-images.githubusercontent.com/79036525/181627923-fc073275-03ee-4b18-bd53-4ffe80fd78a7.png" align="center" width="400" height="200"/> &ensp;
+  <p align="center"><img src="https://user-images.githubusercontent.com/79036525/181627923-fc073275-03ee-4b18-bd53-4ffe80fd78a7.png" align="center" width="400" height="200"/> 
   <img src="https://user-images.githubusercontent.com/79036525/181628322-0bc6c9ad-ef07-4d11-b68b-6b0b5e051357.png" align="center" width="400" height="180"/></p>
   
-  <p align="center"><img src="https://user-images.githubusercontent.com/79036525/181628150-f6659720-a918-40fd-8f67-1a898ce06faf.png" align="center" width="400" height="200"/>  &ensp; 
+  <p align="center"><img src="https://user-images.githubusercontent.com/79036525/181628150-f6659720-a918-40fd-8f67-1a898ce06faf.png" align="center" width="400" height="200"/>  
   <img src="https://user-images.githubusercontent.com/79036525/181628947-93ab8216-ea88-4272-b3c9-5a0126293bfb.png" align="center" width="400" height="200"/></p>
 
   > These graphs can be downloaded and stored in the local storage.
