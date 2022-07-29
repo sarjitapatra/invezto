@@ -61,12 +61,12 @@ This is implemented to construct a diverse portfolio of stocks across different 
 
 
 ## TECHSTACK
-- [KAGGLE](https://github.com/sarjitapatra/invezto/tree/master/TS_Model) - To prepare the Machine Learning Notebook
-- VSCode, Streamlit -> To write code and display the predicted data
-- Plotly -> To display all the graphs
-- Heroku-> To deploy the Product
-- MongoDB-> To store Companies data
-- Language Used: `Python`
+- Jupyter Notebook → To prepare the Machine Learning Notebook
+- Plotly → To display all the graphs
+- Streamlit → Framework used to build the web application
+- Streamlit Cloud → To deploy the Product
+- MongoDB → To store Companies data
+- Language Used → `Python 3.10`
 - Libraries:
 ```r
 joblib==1.1.0
