@@ -10,7 +10,9 @@
 - It also gives predictions on the future of these stock markets and how their value can be improved.
 
 ---
-### <p align="center"><span>Check out out Product [here](https://sarjitapatra-invezto-main-ih4fph.streamlitapp.com/).</span></p>
+### <p align="center"><span>Check out our Product [here](https://sarjitapatra-invezto-main-ih4fph.streamlitapp.com/).</span></p>
+### <p align="center"><span>[Stock Market Prediction Product Demo](https://drive.google.com/file/d/1WMEkgI6sJ5021GPn240TgEhJWdan87Iw/view?usp=sharing).</span></p>
+### <p align="center"><span>[Portfolio Optimization Product Demo](https://drive.google.com/file/d/1hkkVQ-KTMiDb-XmUhn3rI-iggHVyqHXj/view?usp=sharing).</span></p>
 ---
 
 ## FEATURES :
@@ -52,9 +54,9 @@
 This is implemented to construct a diverse portfolio of stocks across different industries for a person interested in acquiring wealth.
 
 * Select the Starting date, ending date and the list of the Companies. The Portfolio Optimization is done using 3 methods :
-*   Mean Variance Method
-*   HRP Method
-*   mCVAR Method
+>*   Mean Variance Method
+>*   HRP Method
+>*   mCVAR Method
 * The resultant output of each of these is displayed accordingly. In each of the methods the total amount of investment has to be entered by the User in USD.
 
 
