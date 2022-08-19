@@ -10,7 +10,7 @@
 - It also gives predictions on the future of these stock markets and how their value can be improved.
 
 ---
-### <p align="center"><span>Check out our Product [here](https://sarjitapatra-invezto-main-ih4fph.streamlitapp.com/).</span></p>
+### <p align="center"><span>[Check out our Product here](https://sarjitapatra-invezto-main-y2k610.streamlitapp.com/).</span></p>
 ### <p align="center"><span>[Stock Market Prediction Product Demo](https://drive.google.com/file/d/1WMEkgI6sJ5021GPn240TgEhJWdan87Iw/view?usp=sharing).</span></p>
 ### <p align="center"><span>[Portfolio Optimization Product Demo](https://drive.google.com/file/d/1hkkVQ-KTMiDb-XmUhn3rI-iggHVyqHXj/view?usp=sharing).</span></p>
 ---
