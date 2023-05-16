@@ -3,12 +3,13 @@ import pandas as pd
 import pandas_datareader.data as web
 import datetime
 from functools import reduce
+import yfinance as yf
 
 @st.experimental_memo(show_spinner = False)
 def combine_return(start, end, opt):
     df = []
     for i in opt:
-        data = web.DataReader(f'{i}', "yahoo", start, end)
+        data = yf.download(f'{i}', start, end)
         data[f'{i}'] = data["Adj Close"]
         data = data[[f'{i}']]
         df.append(data)
